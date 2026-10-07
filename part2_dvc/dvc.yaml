@@ -1,0 +1,40 @@
+stages:
+  get_data:
+    cmd: python3 scripts/get_data.py
+    deps:
+      - scripts/get_data.py
+      - params.yaml
+    outs:
+      - data/cleaned_data.csv
+  preprocess:
+    cmd: python3 scripts/preprocess.py
+    deps:
+      - scripts/preprocess.py
+      - params.yaml
+      - data/cleaned_data.csv
+    outs:
+      - data/X_train.csv
+      - data/X_test.csv
+      - data/y_train.csv
+      - data/y_test.csv
+      - models/preprocessor.pkl
+  fit:
+    cmd: python3 scripts/fit.py
+    deps:
+      - scripts/fit.py
+      - params.yaml
+      - data/X_train.csv
+      - data/y_train.csv
+      - models/preprocessor.pkl
+    outs:
+      - models/model.pkl
+  evaluate:
+    cmd: python3 scripts/evaluate.py
+    deps:
+      - scripts/evaluate.py
+      - params.yaml
+      - data/X_test.csv
+      - data/y_test.csv
+      - models/model.pkl
+    metrics:
+      - cv_results/metrics.json
