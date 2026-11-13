@@ -1,5 +1,7 @@
 [core]
     remote = my_storage
 ['remote "my_storage"']
-    url = s3://s3-student-mle-20260914-e44b43c7ce
+    url = s3://mle-20261110-a098f81ea7fe
     endpointurl = https://storage.yandexcloud.net
+    access_key_id = YCAJEKqIIWnj3sMs2_BFZprTr
+    secret_access_key = YCOM6lMscWB4wJxXGgw1NkNE7HjpeZnRsLqYi5Eh
